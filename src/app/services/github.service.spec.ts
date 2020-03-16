@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 import { GithubService } from './github.service';
 import {GithubUser} from '../model/github-user';
 import {Pending} from '../model/pending';
-import {RouterTestingModule} from '@angular/router/testing';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {GithubRepository} from '../model/github-repository';
 
 describe('GithubService', () => {
   let service: GithubService;
@@ -23,5 +23,15 @@ describe('GithubService', () => {
   it('Verifica o método getUser() e se o retorno é um Pending<GithubUser>', () => {
     expect(service.getUser).toBeTruthy();
     expect<Pending<GithubUser>>(service.getUser('test')).toBeTruthy();
+  });
+
+  it('Verifica o método getUserRepositories() e se o retorno é um Pending<[GithubRepository]>', () => {
+    expect(service.getUserRepositories).toBeTruthy();
+    expect<Pending<[GithubRepository]>>(service.getUserRepositories('test')).toBeTruthy();
+  });
+
+  it('Verifica o método getUserStarred() e se o retorno é um Pending<[GithubRepository]>', () => {
+    expect(service.getUserStarred).toBeTruthy();
+    expect<Pending<[GithubRepository]>>(service.getUserStarred('test')).toBeTruthy();
   });
 });
