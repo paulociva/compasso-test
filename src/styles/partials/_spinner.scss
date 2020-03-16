@@ -1,0 +1,11 @@
+@import "./colors";
+
+mat-spinner{
+  svg{
+
+  circle{
+    stroke: map_get($default-primary-palette, 500);
+  }
+
+  }
+}

@@ -1,0 +1,50 @@
+@import "src/styles/theme";
+
+
+.repository {
+  margin: 6px;
+  padding: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: map-get($default-primary-palette, 500);
+  color: map-get($primaryContrast, 500);
+
+  &-header {
+    .avatar {
+      img {
+        border-radius: 50%;
+        height: 53px;
+        width: 53px;
+      }
+    }
+
+    &-text {
+      margin-left: 16px;
+      overflow: hidden;
+    }
+
+    &-title {
+      a {
+        display: inline-block;
+        line-height: 36px;
+        font-size: 24px;
+        vertical-align: middle;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+        color: map-get($default-accent-palette, 500);
+      }
+    }
+  }
+
+  &-content{
+    padding: 8px 0;
+    p {
+      min-height: 36px;
+    }
+  }
+  &-footer {
+    font-size: 14px;
+  }
+}

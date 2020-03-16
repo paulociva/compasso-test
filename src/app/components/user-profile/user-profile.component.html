@@ -1,0 +1,45 @@
+<div class="profile" fxFlex fxLayout="column">
+  <div class="profile-header" fxLayout="row" fxLayoutAlign="start center">
+    <button mat-icon-button [routerLink]="'/'">
+      <mat-icon octicon="chevron-left"></mat-icon>
+    </button>
+    <h3>Busca de Usuários</h3>
+  </div>
+  <div class="profile-content" fxFlex fxLayout="row wrap" *ngIf="user$.data | async as user">
+    <section fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="center">
+      <app-user-card [user]="user" [showRepos]="false"></app-user-card>
+    </section>
+
+    <section fxFlex="100" fxFlex.gt-sm="70">
+      <h2>Repositórios Próprios</h2>
+      <p>Repositórios GitHub que o usuário {{user?.name}} criou.</p>
+      <div *ngIf="owner$?.data | async as repositories" fxLayout="row wrap" fxLayoutAlign="center center">
+        <app-user-repository *ngFor="let repository of repositories" [repository]="repository"
+                             fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="50" fxFlex.gt-md="33">
+        </app-user-repository>
+        <div *ngIf="!repositories.length && (owner$?.status | async) != LoadingStatus.LOADING">
+          Nenhum repositório próprio encontrado para o usuário {{login}}
+        </div>
+        <div fxFlex fxLayoutAlign="center center"
+             *ngIf="(owner$?.status | async) == LoadingStatus.LOADING">
+          <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
+        </div>
+      </div>
+      <h2>Repositórios com Estrela</h2>
+      <p>Repositórios GitHub que o usuário  {{user?.name}} marcou com estrela.</p>
+
+      <div *ngIf="starred$?.data | async as repositories" fxLayout="row wrap" fxLayoutAlign="center center">
+        <app-user-repository *ngFor="let repository of repositories" [repository]="repository"
+                             fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="50" fxFlex.gt-md="33">
+        </app-user-repository>
+        <div *ngIf="!repositories.length && (starred$?.status | async) != LoadingStatus.LOADING">
+          Nenhum repositório com estrela encontrado para o usuário {{login}}
+        </div>
+        <div fxFlex fxLayoutAlign="center center"
+             *ngIf="(starred$?.status | async) == LoadingStatus.LOADING">
+          <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

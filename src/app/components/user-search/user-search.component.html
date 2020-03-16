@@ -1,0 +1,53 @@
+<div fxFlex fxLayout="column">
+
+  <section class="header" fxLayout="column" fxLayoutAlign="center center">
+    <div class="hero-text">
+      <mat-icon class="hero-icon" octicon="mark-github" size="300"></mat-icon>
+      <h1>
+        Buscador de Usuários do Github
+      </h1>
+    </div>
+  </section>
+
+  <section class="content" fxLayout="column" fxLayoutAlign="center">
+
+    <section class="search" fxFlex fxLayout="row" fxLayoutAlign="start center"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+      <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon octicon="search" size="20"></mat-icon>
+        <input fxFlex [formControl]="searchInput" [placeholder]="'Insira o login do usuário'">
+      </div>
+    </section>
+
+    <section fxFlex="grow" fxLayout.lt-md="column" fxLayoutAlign="center">
+      <section fxLayoutAlign="center" [fxFlex]="showRepositories ? 25: 'grow'"
+               [fxFlex.lt-md]="'grow'">
+        <app-user-card *ngIf="user$?.data | async as user" [user]="user"
+                       (repositoryType)="getRepositories(user.login, $event)">
+        </app-user-card>
+        <div *ngIf="(user$?.status | async) == LoadingStatus.ERROR && searchInput.value != ''">
+          Usuário não encontrado para o login: {{searchInput.value}}
+        </div>
+        <div *ngIf="(user$?.status | async) == LoadingStatus.LOADING">
+          <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
+        </div>
+      </section>
+
+      <section fxFlex="75" fxFlex.lt-md="grow" fxLayout="row wrap" fxLayoutAlign="center center"
+               *ngIf="showRepositories">
+        <ng-container *ngIf="repositories$?.data | async as repositories">
+          <app-user-repository *ngFor="let repository of repositories" [repository]="repository"
+                               fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="50" fxFlex.gt-md="33">
+          </app-user-repository>
+          <div *ngIf="!repositories.length && (repositories$?.status | async) != LoadingStatus.LOADING">
+            Nenhum repositório encontrado para o usuário {{searchInput.value}}
+          </div>
+        </ng-container>
+        <div fxFlex fxLayoutAlign="center center" *ngIf="(repositories$?.status | async) == LoadingStatus.LOADING">
+          <mat-spinner [mode]="'indeterminate'" [diameter]="50"></mat-spinner>
+        </div>
+      </section>
+    </section>
+
+  </section>
+</div>

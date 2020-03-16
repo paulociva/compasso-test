@@ -1,0 +1,40 @@
+<div class="user" [@animate]="{value:'*',params:{y:'100%'}}" fxLayout="column" *ngIf="user">
+  <section class="user-content" fxFlex="grow" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="12px">
+    <a class="avatar-container" [routerLink]="'/user/'+user.login">
+      <img class="avatar" src="{{user.avatar_url}}">
+    </a>
+    <div class="user-name">{{user.name}}</div>
+    <div *ngIf="user.company" fxFlexAlign="stretch" fxLayoutAlign="start center">
+      <mat-icon octicon="organization" size="20"></mat-icon>
+      {{user.company}}</div>
+    <div *ngIf="user.location" fxFlexAlign="stretch" fxLayoutAlign="start center">
+      <mat-icon octicon="location" size="20"></mat-icon>
+      {{user.location}}</div>
+    <div *ngIf="user.email" fxFlexAlign="stretch" fxLayoutAlign="start center">
+      <mat-icon octicon="mail" size="20"></mat-icon>
+      {{user.email}}</div>
+    <div *ngIf="user.blog" fxFlexAlign="stretch" fxLayoutAlign="start center">
+      <mat-icon octicon="link-external" size="20"></mat-icon>
+      <a [href]="user.blog" target="_blank" rel="noreferrer">{{user.blog}}</a></div>
+    <div fxFlexAlign="stretch" fxLayoutAlign="start center">
+      <mat-icon octicon="clock" size="20"></mat-icon>
+      Entrou em {{user.created_at | date:'dd/MM/yyyy'}}</div>
+
+  </section>
+  <section class="user-repos" fxLayout="row wrap" fxLayoutAlign="space-around center"
+  *ngIf="showRepos">
+    <div class="title" fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+      Repositórios
+    </div>
+    <div class="owner" fxFlex="40" fxLayout="column" fxLayoutAlign="start center"
+         (click)="getRepositoriesByTipe('owner')">
+      <mat-icon octicon="repo" size="24"></mat-icon>
+      Próprios
+    </div>
+    <div class="starred" fxFlex="40" fxLayout="column" fxLayoutAlign="start center"
+         (click)="getRepositoriesByTipe('starred')">
+      <mat-icon octicon="star" size="24"></mat-icon>
+      Com Estrela
+    </div>
+  </section>
+</div>

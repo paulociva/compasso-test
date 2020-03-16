@@ -1,0 +1,14 @@
+@import "src/styles/theme";
+.profile{
+  &-header{
+    padding: 12px;
+    background: map-get($default-primary-palette, 500);
+    color: map-get($primaryContrast, 500);
+    h3{
+      margin-left: 12px;
+    }
+  }
+  &-content{
+    padding: 24px;
+  }
+}

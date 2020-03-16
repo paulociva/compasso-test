@@ -1,0 +1,9 @@
+@import "~@angular/material/_theming.scss";
+@import "partials/colors";
+@import "partials/spinner";
+
+$theme: mat-light-theme($default-accent-palette, $default-accent-palette);
+
+$background: map-get($theme, background);
+$foreground: map-get($theme, foreground);
+
