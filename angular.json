@@ -124,7 +124,7 @@
   "defaultProject": "github-search-user",
   "schematics": {
     "@schematics/angular:component": {
-      "styleext": "scss"
+      "style": "scss"
     }
   }
 }
