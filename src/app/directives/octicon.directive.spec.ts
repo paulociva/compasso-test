@@ -1,6 +1,6 @@
-import {Component, DebugElement, ElementRef, Renderer2} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import { Component, DebugElement, ElementRef, Renderer2 } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { OcticonDirective } from './octicon.directive';
 
 @Component({
@@ -23,7 +23,7 @@ describe('Diretiva Octicon', () => {
   let component: TestOcticonComponent;
   let icons: DebugElement[];
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestOcticonComponent, OcticonDirective],
       providers: [

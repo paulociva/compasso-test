@@ -1,22 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { UserRepositoryComponent } from './user-repository.component';
-import {TruncatePipe} from '../../pipes/truncate.pipe';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserRepositoryComponent', () => {
   let component: UserRepositoryComponent;
   let fixture: ComponentFixture<UserRepositoryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         UserRepositoryComponent,
         TruncatePipe
       ],
-      imports: [ BrowserAnimationsModule ]
+      imports: [BrowserAnimationsModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

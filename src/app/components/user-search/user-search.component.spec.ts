@@ -1,28 +1,28 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { UserSearchComponent } from './user-search.component';
-import {UserCardComponent} from '../user-card/user-card.component';
-import {UserRepositoryComponent} from '../user-repository/user-repository.component';
-import {OcticonDirective} from '../../directives/octicon.directive';
-import {TruncatePipe} from '../../pipes/truncate.pipe';
+import { UserCardComponent } from '../user-card/user-card.component';
+import { UserRepositoryComponent } from '../user-repository/user-repository.component';
+import { OcticonDirective } from '../../directives/octicon.directive';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 describe('UserSearchComponent', () => {
   let component: UserSearchComponent;
   let fixture: ComponentFixture<UserSearchComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserSearchComponent,
+      declarations: [UserSearchComponent,
         UserCardComponent,
         UserRepositoryComponent,
         OcticonDirective,
         TruncatePipe
       ],
-      imports: [ BrowserAnimationsModule, HttpClientTestingModule ]
+      imports: [BrowserAnimationsModule, HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
