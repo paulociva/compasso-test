@@ -1,13 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
-import {FormControl} from '@angular/forms';
-import {Pending} from '../../model/pending';
-import {GithubUser} from '../../model/github-user';
-import {GithubRepository} from '../../model/github-repository';
-import {GithubService} from '../../services/github.service';
-import {debounceTime, distinctUntilChanged, filter, takeUntil, tap} from 'rxjs/operators';
-import {LoadingStatus} from '../../model/loading-status.enum';
-import {coreAnimations} from '../../utils/animations';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { Pending } from '../../model/pending';
+import { GithubUser } from '../../model/github-user';
+import { GithubRepository } from '../../model/github-repository';
+import { GithubService } from '../../services/github.service';
+import { debounceTime, distinctUntilChanged, filter, takeUntil, tap } from 'rxjs/operators';
+import { LoadingStatus } from '../../model/loading-status.enum';
+import { coreAnimations } from '../../utils/animations';
 
 @Component({
   selector: 'app-user-search',
@@ -18,7 +18,7 @@ import {coreAnimations} from '../../utils/animations';
 export class UserSearchComponent implements OnInit, OnDestroy {
 
   // Private
-  private _unsubscribeAll: Subject<any>;
+  private _unsubscribeAll: Subject<null>;
 
   LoadingStatus = LoadingStatus;
   showRepositories = false;
@@ -31,6 +31,9 @@ export class UserSearchComponent implements OnInit, OnDestroy {
   constructor(
     private _githubService: GithubService
   ) {
+
+    this.user$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
+    this.repositories$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
     this.searchInput = new FormControl('');
     this._unsubscribeAll = new Subject();
   }

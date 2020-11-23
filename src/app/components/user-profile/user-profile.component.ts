@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Subject} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
-import {Pending} from '../../model/pending';
-import {GithubUser} from '../../model/github-user';
-import {GithubRepository} from '../../model/github-repository';
-import {LoadingStatus} from '../../model/loading-status.enum';
-import {GithubService} from '../../services/github.service';
+import { Pending } from '../../model/pending';
+import { GithubUser } from '../../model/github-user';
+import { GithubRepository } from '../../model/github-repository';
+import { LoadingStatus } from '../../model/loading-status.enum';
+import { GithubService } from '../../services/github.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,8 +14,6 @@ import {GithubService} from '../../services/github.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-
-  private _unsubscribeAll: Subject<any>;
 
   LoadingStatus = LoadingStatus;
 
@@ -28,7 +26,9 @@ export class UserProfileComponent implements OnInit {
     private _route: ActivatedRoute,
     private _githubService: GithubService
   ) {
-    this._unsubscribeAll = new Subject();
+    this.user$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
+    this.starred$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
+    this.owner$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
     this.login = this._route.snapshot.params.login;
   }
 

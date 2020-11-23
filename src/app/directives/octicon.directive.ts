@@ -1,4 +1,5 @@
-import {Directive, OnInit, ElementRef, Renderer2, Input} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+// @ts-ignore
 import * as octicons from '@primer/octicons';
 
 @Directive({
@@ -6,15 +7,16 @@ import * as octicons from '@primer/octicons';
 })
 export class OcticonDirective implements OnInit {
 
-  @Input('octicon') iconName: string;
-  @Input() size: number;
-  @Input() color: string;
+  @Input('octicon') iconName = '';
+  @Input() size = 0;
+  @Input() color = '';
 
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2
   ) {
   }
+
   ngOnInit(): void {
     if (this.iconExists()) {
       this.renderIcon();

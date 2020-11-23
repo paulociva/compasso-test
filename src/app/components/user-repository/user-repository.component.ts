@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import {GithubRepository} from '../../model/github-repository';
-import {coreAnimations} from '../../utils/animations';
+import { GithubRepository } from '../../model/github-repository';
+import { coreAnimations } from '../../utils/animations';
 
 @Component({
   selector: 'app-user-repository',
@@ -10,7 +10,7 @@ import {coreAnimations} from '../../utils/animations';
   animations: coreAnimations
 })
 export class UserRepositoryComponent {
-  @Input() repository: GithubRepository;
+  @Input() repository?: GithubRepository;
 
   randomColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);

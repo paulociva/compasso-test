@@ -2,7 +2,7 @@
 
   <section class="header" fxLayout="column" fxLayoutAlign="center center">
     <div class="hero-text">
-      <mat-icon class="hero-icon" octicon="mark-github" size="300"></mat-icon>
+      <mat-icon [size]="300" class="hero-icon" octicon="mark-github"></mat-icon>
       <h1>
         Buscador de Usuários do Github
       </h1>
@@ -14,7 +14,7 @@
     <section class="search" fxFlex fxLayout="row" fxLayoutAlign="start center"
              [@animate]="{value:'*',params:{y:'100%'}}">
       <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
-        <mat-icon octicon="search" size="20"></mat-icon>
+        <mat-icon [size]="20" octicon="search"></mat-icon>
         <input fxFlex [formControl]="searchInput" [placeholder]="'Insira o login do usuário'">
       </div>
     </section>
