@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({ name: 'truncate' })
 export class TruncatePipe implements PipeTransform {
 
-  transform(text: string, limit = 0, ellipsis = true): string {
+  transform(text: string | null, limit = 0, ellipsis = true): string {
 
     if (!text) {
       return '';

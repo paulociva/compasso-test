@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import {GithubUser} from '../../model/github-user';
-import {coreAnimations} from '../../utils/animations';
+import { GithubUser } from '../../model/github-user';
+import { coreAnimations } from '../../utils/animations';
 
 @Component({
   selector: 'app-user-card',
@@ -10,7 +10,7 @@ import {coreAnimations} from '../../utils/animations';
   animations: coreAnimations
 })
 export class UserCardComponent {
-  @Input() user: GithubUser;
+  @Input() user?: GithubUser;
   @Input() showRepos = true;
   @Output() repositoryType: EventEmitter<string>;
 

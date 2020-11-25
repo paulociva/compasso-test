@@ -27,7 +27,7 @@
     </div>
   </section>
   <section class="repository-content">
-    <p>{{ repository.description | truncate:70 }}</p>
+    <p>{{ repository?.description | truncate:70 }}</p>
   </section>
   <section class="repository-footer" fxFlex fxLayout="column">
     <span>Criado: {{ repository.created_at | date: 'dd/MM/yyyy' }}</span>

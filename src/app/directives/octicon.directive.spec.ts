@@ -23,6 +23,12 @@ describe('Diretiva Octicon', () => {
   let component: TestOcticonComponent;
   let icons: DebugElement[];
 
+  const attributes = {
+    octicon: 'octicon',
+    size: 'size',
+    color: 'color'
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TestOcticonComponent, OcticonDirective],
@@ -44,18 +50,18 @@ describe('Diretiva Octicon', () => {
 
   it('verifica se tem icone', () => {
     const icon = icons[0];
-    expect(icon.attributes['octicon']).toEqual('book');
+    expect(icon.attributes[attributes.octicon]).toEqual('book');
   });
 
   it('verifica se tem icone com tamanho passado', () => {
     const icon = icons[1];
-    expect(icon.attributes['octicon']).toEqual('gear');
-    expect(icon.attributes['size']).toEqual('12');
+    expect(icon.attributes[attributes.octicon]).toEqual('gear');
+    expect(icon.attributes[attributes.size]).toEqual('12');
   });
 
   it('verifica se tem icone com cor passada', () => {
     const icon = icons[2];
-    expect(icon.attributes['octicon']).toEqual('star');
-    expect(icon.attributes['color']).toEqual('red');
+    expect(icon.attributes[attributes.octicon]).toEqual('star');
+    expect(icon.attributes[attributes.color]).toEqual('red');
   });
 });
