@@ -22,7 +22,7 @@
     <section fxFlex="grow" fxLayout.lt-md="column" fxLayoutAlign="center">
       <section fxLayoutAlign="center" [fxFlex]="showRepositories ? 25: 'grow'"
                [fxFlex.lt-md]="'grow'">
-        <app-user-card *ngIf="user$?.data | async as user" [user]="user"
+        <app-user-card *ngIf="searchInput.value != '' && (user$?.data | async) as user" [user]="user"
                        (repositoryType)="getRepositories(user.login, $event)">
         </app-user-card>
         <div *ngIf="(user$?.status | async) == LoadingStatus.ERROR && searchInput.value != ''">

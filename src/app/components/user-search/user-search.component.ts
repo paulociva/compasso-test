@@ -17,7 +17,6 @@ import { coreAnimations } from '../../utils/animations';
 })
 export class UserSearchComponent implements OnInit, OnDestroy {
 
-  // Private
   private _unsubscribeAll: Subject<null>;
 
   LoadingStatus = LoadingStatus;
@@ -32,8 +31,8 @@ export class UserSearchComponent implements OnInit, OnDestroy {
     private _githubService: GithubService
   ) {
 
-    this.user$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
-    this.repositories$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(LoadingStatus.LOADING) };
+    this.user$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(null) };
+    this.repositories$ = { data: new BehaviorSubject(null), status: new BehaviorSubject(null) };
     this.searchInput = new FormControl('');
     this._unsubscribeAll = new Subject();
   }
