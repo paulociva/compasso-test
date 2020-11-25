@@ -13,6 +13,7 @@ describe('Truncate Pipe', () => {
   it('Verifica o retorno empty se texto é null', () => {
     expect(truncatePipe.transform('')).toEqual('');
     expect(truncatePipe.transform(null)).toEqual('');
+    expect(truncatePipe.transform(undefined)).toEqual('');
   });
 
   it('verifica o retorno original do texto se o limite for zero ou não for passado', () => {
