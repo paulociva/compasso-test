@@ -10,7 +10,7 @@ Acesse no navegador `http://localhost:4200/`. As mudanças nos arquivos vão rec
 
 ## Build
 
-Está configurado para todo merge em master deployar automático em: [Heroku](https://paulo-github-search.herokuapp.com/).
+Está configurado para todo merge em master fazer deploy automático em: [Heroku](https://paulo-github-search.herokuapp.com/).
 
 ## Rodando os testes
 
